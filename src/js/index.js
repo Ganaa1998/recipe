@@ -1,9 +1,8 @@
-const arr = [23, 44, 12];
+import p from 'lodash'
+import query from './model/search';
+import { add as niilber, multiply as m, id } from "./view/searchView";
 
-let func = a => {
-    console.log(`too: ${a}`);
-}
 
-const arr2 = [...arr, 44, 1223, ];
+console.log(`Хайлт: ${query}`);
 
-func(arr2[4]);
+console.log(`Хоёр тооны нийлбэр: ${niilber(6,6)}`);
