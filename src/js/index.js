@@ -1,8 +1,5 @@
-import p from 'lodash'
-import query from './model/search';
-import { add as niilber, multiply as m, id } from "./view/searchView";
+import Search from './model/Search';
 
+let search = new Search('pasta');
 
-console.log(`Хайлт: ${query}`);
-
-console.log(`Хоёр тооны нийлбэр: ${niilber(6,6)}`);
+search.doSearch().then(r => console.log(r));
