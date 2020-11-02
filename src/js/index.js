@@ -30,12 +30,22 @@ const controlSearch = async() => {
         await state.search.doSearch();
         // 5. Хайлтын үр дүнг дэлгэцэнд үзүүлнэ.
         clearLoader();
-        if (state.search.result === undefined) alert('Хайлтаар илэрцгүй....')
-        searchView.renderRecipes(state.search.result)
+        if (state.search.result === undefined) alert('Хайлтаар илэрцгүй....');
+        else searchView.renderRecipes(state.search.result);
     }
 }
 
 elements.searchFrom.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
+});
+
+elements.pageButtons.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+
+    if (btn) {
+        const gotoPageNumber = parseInt(btn.dataset.goto, 10);
+        searchView.clearSearchResult();
+        searchView.renderRecipes(state.search.result, gotoPageNumber);
+    }
 });
