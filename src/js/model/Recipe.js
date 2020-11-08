@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class Recipe {
     constructor(id) {
@@ -6,7 +6,9 @@ export default class Recipe {
     }
 
     async getRecipe() {
-        const result = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.id}`);
+        const result = await axios(
+            "https://forkify-api.herokuapp.com/api/get?rId=" + this.id
+        );
 
         this.publisher = result.data.recipe.publisher;
         this.ingredients = result.data.recipe.ingredients;
@@ -15,6 +17,15 @@ export default class Recipe {
         this.publisher_url = result.data.recipe.publisher_url;
         this.title = result.data.recipe.title;
         this.social_rank = result.data.recipe.social_rank;
-
     }
+
+    calcTime() {
+        // Найрлага бүрт ойролцоогоор 5 минут зарцуулна
+        this.time = this.ingredients.length * 5;
+    }
+
+    calcHuniiToo() {
+        this.huniiToo = 4;
+    }
+
 }
